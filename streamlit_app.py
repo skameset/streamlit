@@ -40,7 +40,7 @@ st.write("### (5) use the delta option in the overall profit margin metric to sh
 # Drop-down for Category - #1
 category = st.selectbox("Select a Category", df['Category'].unique())
 
-# add a multi-select for Sub_Category in the selected Category - #2
-sub_categories = st.multiselect("Select Sub-Categories", df[df['Category'] == category]['Sub-Category'].unique())
+# Add a multi-select for Sub_Category in the selected Category - #2
+sub_categories = st.multiselect("Select Sub_Categories", df[df['Category'] == category]['Sub_Category'].unique())
 
 
