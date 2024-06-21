@@ -44,8 +44,4 @@ category = st.selectbox("Select a Category", df['Category'].unique())
 sub_categories = st.multiselect("Select Sub_Categories", df[df['Category'] == category]['Sub_Category'].unique())
 
 # 3. Show a line chart of sales for the selected items in (2)"
-filtered_df = df[(df['Category'] == category) & (df['Sub-Category'].isin(sub_categories))]
-if not filtered_df.empty:
-    sales_by_month_filtered = filtered_df.filter(items=['Sales']).groupby(pd.Grouper(freq='M')).sum()
-    st.line_chart(sales_by_month_filtered, y="Sales")
 
