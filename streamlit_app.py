@@ -43,5 +43,4 @@ category = st.selectbox("Select a Category", df['Category'].unique())
 # 2. Add a multi-select for Sub_Category in the selected Category
 sub_categories = st.multiselect("Select Sub_Categories", df[df['Category'] == category]['Sub_Category'].unique())
 
-# 3. Show a line chart of sales for the selected items in (2)"
 
