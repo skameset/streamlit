@@ -51,4 +51,19 @@ filtered_df = df[df['Sub_Category'].isin(sub_categories)]
 sales_by_month_filtered = filtered_df.filter(items=['Sales']).groupby(pd.Grouper(freq='M')).sum()
 st.line_chart(sales_by_month_filtered, y="Sales")
 
+# 4. Show three metrics for the selected items
+total_sales = filtered_df['Sales'].sum()
+total_profit = filtered_df['Profit'].sum()
+overall_profit_margin = (total_profit / total_sales) * 100 if total_sales != 0 else 0
 
+st.metric("Total Sales", f"${total_sales:,.2f}")
+st.metric("Total Profit", f"${total_profit:,.2f}")
+
+# Calculate overall average profit margin for all products across all categories
+
+total_sales_overall = df['Sales'].sum()
+total_profit_overall = df['Profit'].sum()
+overall_avg_profit_margin = (total_profit_overall / total_sales_overall) * 100 if total_sales_overall != 0 else 0
+profit_margin_delta = overall_profit_margin - overall_avg_profit_margin
+
+st.metric("Overall Profit Margin", f"{overall_profit_margin:.2f}%", delta=f"{profit_margin_delta:.2f}%")
